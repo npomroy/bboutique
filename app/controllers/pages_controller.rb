@@ -2,6 +2,12 @@ class PagesController < ApplicationController
     def home
     end
     
+    def products
+    end
+    
+    def news
+    end
+    
     def faq
     end
     
