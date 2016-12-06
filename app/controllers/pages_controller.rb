@@ -3,6 +3,7 @@ class PagesController < ApplicationController
     end
     
     def products
+        @products = Product.all #Product.includes() TODO
     end
     
     def news

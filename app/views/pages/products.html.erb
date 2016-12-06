@@ -1,1 +1,23 @@
-<h1>BB Products Page</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h1>BB Products Page</h1>
+            <% @products.each do |product| %>
+                <div class="well">
+                    <h2 class='text-center'><%= product.name %></h2>
+                    <% if !(product.picture_url == "#") %>
+                        <%= image_tag product.picture_url, class: 'product-index-picture' %>
+                    <% end %>
+                    <h5>$<%= product.price %></h5>
+                    <p><%= product.comments %></p>
+                    <% if product.christmas %>
+                        <i class='fa fa-tree'></i>
+                    <% end %>
+                    <% if product.clothing %>
+                        <i class='fa fa-black-tie'></i>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
