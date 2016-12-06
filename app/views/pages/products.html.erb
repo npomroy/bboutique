@@ -10,6 +10,10 @@
                     <% end %>
                     <h5>$<%= product.price %></h5>
                     <p><%= product.comments %></p>
+                    <% if product.in_stock %>
+                        <i class='fa fa-battery-full'></i>
+                        <h5>In Stock</h5>
+                    <% end %>
                     <% if product.christmas %>
                         <i class='fa fa-tree'></i>
                     <% end %>
