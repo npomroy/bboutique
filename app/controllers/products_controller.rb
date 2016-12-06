@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+   before_action :authenticate_user!
+   before_action :only_admin_user
+   
    def new
       @product = Product.new
    end 
@@ -10,4 +13,10 @@ class ProductsController < ApplicationController
    def show
       
    end
+   
+   private
+       def only_admin_user
+           @user = current_user
+           redirect_to(root_url) unless @user.admin
+       end
 end
