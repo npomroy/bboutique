@@ -2,7 +2,6 @@ class UsersController < ApplicationController
     before_action :authenticate_user!
     before_action :only_admin_user
     
-    #This file is to be removed TODO
     
    def show
        @user = User.find( current_user.id)

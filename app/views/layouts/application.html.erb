@@ -36,6 +36,9 @@
             <% else %>
               <%= link_to "Login", new_user_session_path, class: "btn btn-default navbar-btn" %>
             <% end %>
+            <% if @admin %>
+              <%= link_to "Control Panel", control_panel_path, class: "btn btn-default navbar-btn" %>
+            <% end %>
           </div>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "F.A.Q.", faq_path %></li>
