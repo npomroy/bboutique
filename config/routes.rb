@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'pages#home'
+  devise_for :users
+  get 'control-panel', to: 'users#show'
   get 'products', to: 'pages#products'
   get 'news', to: 'pages#news'
   get 'faq', to: 'pages#faq'
