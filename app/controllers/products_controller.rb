@@ -6,6 +6,17 @@ class ProductsController < ApplicationController
       @product = Product.new
    end 
    
+   def create
+      @product = Product.new( product_params )
+      if @product.save
+         flash[:success] = "Product created"
+         redirect_to products_path
+      else
+         flash[:notice] = "Product creation failed"
+         redner action: :new
+      end
+   end
+   
    def index
       @products = Product.all #Product.includes() TODO
    end
@@ -18,5 +29,9 @@ class ProductsController < ApplicationController
        def only_admin_user
            @user = current_user
            redirect_to(root_url) unless @user.admin
+       end
+       
+       def product_params
+          params.require(:product).permit(:name, :price, :picture_url, :comments, :christmas, :clothing, :in_stock)
        end
 end
