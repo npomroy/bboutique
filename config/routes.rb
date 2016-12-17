@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   devise_for :users
   get 'control-panel', to: 'users#show'
-  resources :products, :patterns
+  resources :products, :patterns, :events
   get 'news', to: 'pages#news'
   get 'faq', to: 'pages#faq'
   get 'about', to: 'pages#about'
