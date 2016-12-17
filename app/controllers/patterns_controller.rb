@@ -14,6 +14,11 @@ class PatternsController < ApplicationController
       end
    end
    
+   def destroy
+      Pattern.find(params[:id]).destroy
+      redirect_to patterns_path
+   end
+   
    def index
         @patterns = Pattern.all 
    end
