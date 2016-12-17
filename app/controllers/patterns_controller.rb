@@ -1,4 +1,7 @@
 class PatternsController < ApplicationController
+   before_action :authenticate_user!, except: [:show, :index]
+   before_action :only_admin_user, except: [:show, :index]
+   
    def new
       @pattern = Pattern.new 
    end
@@ -43,7 +46,11 @@ class PatternsController < ApplicationController
    end
    
    private
-        def pattern_params
-           params.require(:pattern).permit(:name) 
-        end
+      def only_admin_user
+           @user = current_user
+           redirect_to(root_url) unless @user.admin
+      end
+      def pattern_params
+        params.require(:pattern).permit(:name) 
+      end
 end
