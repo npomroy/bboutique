@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h1 class="text-center">Pattern Index</h1>
+            <% @patterns.each do |pattern| %>
+                <div class="well">
+                    <h3><%= pattern.name %></h3>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

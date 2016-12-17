@@ -7,11 +7,15 @@ class PatternsController < ApplicationController
       @pattern = Pattern.new( pattern_params )
       if @pattern.save
           flash[:success] = "Pattern Created"
-          redirect_to root_path
+          redirect_to patterns_path
       else
           flash[:error] = 'Pattern creation failed'
           render action: :new
       end
+   end
+   
+   def index
+        @patterns = Pattern.all 
    end
    
    private
