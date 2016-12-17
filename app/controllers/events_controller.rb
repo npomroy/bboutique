@@ -3,6 +3,10 @@ class EventsController < ApplicationController
       @event = Event.new 
    end
    
+   def edit
+        @event = Event.find(params[:id]) 
+   end
+   
    def create
       @event = Event.new( event_params )
       if @event.save
@@ -20,7 +24,7 @@ class EventsController < ApplicationController
    
    def update
         @event = Event.find(params[:id])
-        if @event.update_attributes
+        if @event.update_attributes( event_params )
             flash[:success] = "Event updated"
             redirect_to event_path(id: params[:id])
         else
