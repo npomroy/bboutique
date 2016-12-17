@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-   before_action :authenticate_user!
-   before_action :only_admin_user
+   before_action :authenticate_user!, except: [:show, :index]
+   before_action :only_admin_user, except: [:show, :index]
    
    def new
       @product = Product.new

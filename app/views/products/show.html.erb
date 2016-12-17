@@ -18,7 +18,7 @@
                 <% if @product.clothing %>
                     <i class='fa fa-black-tie'></i>
                 <% end %>
-                <% if current_user.admin %>
+                <% if user_signed_in? && current_user.admin %>
                     <%= link_to edit_product_path(params[:id]), class: "btn btn-primary" do %>
                         <i class="fa fa-edit"></i>
                     <% end %>
