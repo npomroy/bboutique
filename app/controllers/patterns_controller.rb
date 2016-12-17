@@ -3,6 +3,10 @@ class PatternsController < ApplicationController
       @pattern = Pattern.new 
    end
    
+   def edit
+      @pattern = Pattern.find(params[:id]) 
+   end
+   
    def create
       @pattern = Pattern.new( pattern_params )
       if @pattern.save
