@@ -18,6 +18,17 @@ class PatternsController < ApplicationController
       @pattern = Pattern.find(params[:id]) 
    end
    
+   def update
+        @pattern = Pattern.find(params[:id])
+        if @pattern.update_attributes(pattern_params)
+            flash[:success] = "Pattern updated"
+            redirect_to pattern_path(id: params[:id])
+        else
+            flash[:error] = "Pattern update failed"
+            render action: :show
+        end
+   end
+   
    def destroy
       Pattern.find(params[:id]).destroy
       redirect_to patterns_path
