@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+    before_action :authenticate_user!, except: [:show, :index]
+    before_action :only_admin_user, except: [:show, :index]
+   
    def new
       @event = Event.new 
    end
@@ -43,6 +46,10 @@ class EventsController < ApplicationController
    end
    
    private
+        def only_admin_user
+           @user = current_user
+           redirect_to(root_url) unless @user.admin
+        end
         def event_params
            params.require(:event).permit(:name, :startdate, :details) 
         end
