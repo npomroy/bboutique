@@ -17,12 +17,17 @@ class ProductsController < ApplicationController
       end
    end
    
-   def index
-      @products = Product.all #Product.includes() TODO
-   end
-   
    def show
       
+   end
+   
+   def destroy
+      Product.find(params[:id]).destroy
+      redirect_to products_path
+   end
+   
+   def index
+      @products = Product.all #Product.includes() TODO
    end
    
    private
