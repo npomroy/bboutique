@@ -4,7 +4,9 @@
             <h1 class="text-center">News/Events</h1>
             <% @events.each do |event| %>
                 <div class="well">
-                    <h3><%= event.name %></h3>
+                    <%= link_to event_path(id: event.id) do %>
+                        <h3><%= event.name %></h3>
+                    <% end %>
                     <h5>Starts at: <%= event.startdate %></h5>
                 </div>
             <% end %>
