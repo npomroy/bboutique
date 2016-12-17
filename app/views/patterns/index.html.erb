@@ -4,7 +4,9 @@
             <h1 class="text-center">Pattern Index</h1>
             <% @patterns.each do |pattern| %>
                 <div class="well">
-                    <h3><%= pattern.name %></h3>
+                    <%= link_to pattern_path(id: pattern.id) do %>
+                        <h3><%= pattern.name %></h3>
+                    <% end %>
                 </div>
             <% end %>
         </div>
