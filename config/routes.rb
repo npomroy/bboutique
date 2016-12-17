@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
   get 'control-panel', to: 'users#show'
   resources :products, :patterns, :events
-  get 'news', to: 'pages#news'
   get 'faq', to: 'pages#faq'
   get 'about', to: 'pages#about'
   resources :contacts, only: :create
