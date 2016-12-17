@@ -7,11 +7,16 @@ class EventsController < ApplicationController
       @event = Event.new( event_params )
       if @event.save
           flash[:success] = "Event created"
-          redirect_to root_path
+          redirect_to events_path
       else
           flash[:error] = "Event creation failed"
           render action: :new
       end
+   end
+   
+   def destroy
+        Event.find(params[:id]).destroy
+        redirect_to events_path
    end
    
    def index
