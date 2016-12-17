@@ -4,7 +4,9 @@
             <h1>BB Products Page</h1>
             <% @products.each do |product| %>
                 <div class="well">
-                    <h2 class='text-center'><%= product.name %></h2>
+                    <%= link_to product_path(id: product.id) do %>
+                        <h2 class='text-center'><%= product.name %></h2>
+                    <% end %>
                     <% if !(product.picture_url == "#") %>
                         <%= image_tag product.picture_url, class: 'product-index-picture' %>
                     <% end %>
