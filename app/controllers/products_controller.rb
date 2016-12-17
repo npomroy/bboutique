@@ -21,6 +21,16 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
    end
    
+   def update
+      @product = Product.find(params[:id])
+      if @product.update_attributes( product_params )
+         flash[:success] = "Product updated"
+         redirect_to product_path(id: params[:id])
+      else
+         flash[:error] = "Product update failed"
+         render action: :show
+   end
+   
    def destroy
       Product.find(params[:id]).destroy
       redirect_to products_path
