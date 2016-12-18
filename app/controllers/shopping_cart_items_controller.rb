@@ -14,6 +14,17 @@ class ShoppingCartItemsController < ApplicationController
        end
     end
     
+    def update
+       @shopping_cart_item = ShoppingCartItem.find(params[:id])
+       if @shopping_cart_item.update_attributes(cart_item_params)
+           flash[:success] = "Cart item updated"
+           redirect_to user_cart_items_path(user_id: current_user.id)
+       else
+           flash[:error] = "Cart item upadte failed"
+           redirect_to user_cart_items_path(user_id: current_user.id)
+       end
+    end
+    
     def destroy
         ShoppingCartItem.find(params[:id]).destroy
         redirect_to user_shopping_cart_items_path(user_id: current_user.id)
