@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
    
    def show
       @product = Product.find(params[:id])
+      @shopping_cart_item = ShoppingCartItem.new
    end
    
    def update

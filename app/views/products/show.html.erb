@@ -18,6 +18,17 @@
                 <% if @product.clothing %>
                     <i class='fa fa-black-tie'></i>
                 <% end %>
+                <% if user_signed_in? %>
+                    <%= form_for @shopping_cart_item, url: user_shopping_cart_items_path(current_user.id) do |f| %>
+                        <div class="field form-group">
+                            <%= f.label :quantity %>
+                            <%= f.number_field :count %>
+                        </div>
+                        <div class="actions form-group">
+                            <%= f.submit "Add to cart", class: "btn btn-primary" %>
+                        </div>
+                    <% end %>
+                <% end %>
                 <% if user_signed_in? && current_user.admin %>
                     <%= link_to edit_product_path(params[:id]), class: "btn btn-primary" do %>
                         <i class="fa fa-edit"></i>
