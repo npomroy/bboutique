@@ -14,6 +14,11 @@ class ShoppingCartItemsController < ApplicationController
        end
     end
     
+    def destroy
+        ShoppingCartItem.find(params[:id]).destroy
+        redirect_to user_shopping_cart_items_path(user_id: current_user.id)
+    end
+    
     def index
        @shopping_cart_items = ShoppingCartItem.where("user_id = ?", current_user.id) 
     end

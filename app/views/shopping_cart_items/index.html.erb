@@ -3,8 +3,21 @@
         <div class="col-md-8 col-md-offset-2">
             <h1 class="text-center">My Cart</h1>
             <% @shopping_cart_items.each do |cart_item| %>
-                <div class="well">
-                    <h3><%= cart_item.product_id %></h3>
+                <div class="well row">
+                    <div class="col-sm-3">
+                        <h4>ID: <%= cart_item.id.to_s %></h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <h4>Prod ID: <%= cart_item.product_id %></h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <h4>Count: <%= cart_item.count %></h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <%= link_to user_shopping_cart_item_path(user_id: current_user.id, id: cart_item.id), method: :delete, class: "btn btn-danger" do %>
+                            <i class="fa fa-trash"></i>
+                        <% end %>
+                    </div>
                 </div>
             <% end %>
         </div>
