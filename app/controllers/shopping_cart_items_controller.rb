@@ -14,6 +14,10 @@ class ShoppingCartItemsController < ApplicationController
        end
     end
     
+    def index
+       @shopping_cart_items = ShoppingCartItem.where("user_id = ?", current_user.id) 
+    end
+    
     private
         def cart_item_params
            params.require(:shopping_cart_item).permit(:user_id, :product_id, :count, :cost) 
